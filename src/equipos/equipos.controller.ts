@@ -6,7 +6,7 @@ import { EquiposService } from './equipos.service';
 import { CreateEquipoDto } from './dto/create-equipo.dto';
 import { UpdateEquipoDto } from './dto/update-equipo.dto';
 
-@Controller('equipos') // queda en /api/equipos por el prefijo global
+@Controller('equipos')
 export class EquiposController {
   constructor(private readonly equiposService: EquiposService) {}
 

@@ -51,8 +51,7 @@ export class EquiposService {
       throw new NotFoundException('Equipo no encontrado');
     }
 
-    // Aqui el id llega como string, por eso hay que convertirlo a ObjectId:
-    // deleteMany no lo convierte solo como si lo hace findByIdAndDelete
+    // Aqui el id llega como string, por eso hay que convertirlo a ObjectId
     const objectId = new Types.ObjectId(id);
 
     await this.jugadorModel.deleteMany({ equipoId: objectId }).exec();

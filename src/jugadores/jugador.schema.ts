@@ -8,7 +8,6 @@ export class Jugador {
   @Prop({ required: true, trim: true })
   nombre!: string;
 
-  // Referencia a la coleccion equipos
   @Prop({ type: Types.ObjectId, ref: 'Equipo', required: true })
   equipoId!: Types.ObjectId;
 
@@ -21,7 +20,6 @@ export class Jugador {
 
 export const JugadorSchema = SchemaFactory.createForClass(Jugador);
 
-// ===== CRITERIO 8: indice de texto =====
 // Permite buscar con $text en lugar de recorrer documento por documento
 JugadorSchema.index(
   { nombre: 'text' },
