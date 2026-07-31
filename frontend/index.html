@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StatZone</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Stat<span>Zone</span></h1>
+    <p id="estado">Liga Amateur 2026</p>
+  </header>
+
+  <!-- ===== TABLA DE POSICIONES (GET /api/standings) ===== -->
+  <section>
+    <div class="tit">
+      <h2>Tabla general</h2>
+      <button class="add" id="btnEquipo">+ Equipo</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th class="l">Equipo</th>
+          <th class="opt">PJ</th><th class="opt">G</th><th class="opt">E</th><th class="opt">P</th>
+          <th>DIF</th><th>Pts</th><th style="width:30px"></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+
+  <div class="cols">
+
+    <!-- ===== GOLEO + BUSCADOR (GET /api/players/search) ===== -->
+    <section>
+      <div class="tit">
+        <h2>Jugadores</h2>
+        <button class="add" id="btnJugador">+ Jugador</button>
+      </div>
+      <div class="card">
+        <input id="buscar" type="search" placeholder="Buscar jugador..." aria-label="Buscar jugador">
+        <div id="scorers"></div>
+      </div>
+    </section>
+
+    <!-- ===== REGISTRAR PARTIDO (POST /api/matches) ===== -->
+    <section>
+      <div class="tit"><h2>Registrar resultado</h2></div>
+      <div class="card">
+        <label for="loc">Local</label>
+        <div class="pair">
+          <select id="loc"></select>
+          <input id="gl" class="num" type="number" min="0" value="0" aria-label="Goles local">
+        </div>
+        <label for="vis">Visitante</label>
+        <div class="pair">
+          <select id="vis"></select>
+          <input id="gv" class="num" type="number" min="0" value="0" aria-label="Goles visitante">
+        </div>
+        <button id="btnPartido">Guardar partido</button>
+      </div>
+    </section>
+
+  </div>
+
+  <footer id="pie"></footer>
+</div>
+
+<!-- ===== MODAL EQUIPO ===== -->
+<div class="fondo" id="fondoEquipo">
+  <div class="modal">
+    <h3 id="tituloEquipo">Nuevo equipo</h3>
+    <p class="sub">Coleccion: equipos</p>
+    <label for="eqNombre">Nombre</label>
+    <input id="eqNombre" placeholder="Atletico Poniente">
+    <label for="eqCiudad">Ciudad</label>
+    <input id="eqCiudad" placeholder="Aguascalientes">
+    <div class="botones">
+      <button class="sec" id="cancelEquipo">Cancelar</button>
+      <button id="guardaEquipo">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL JUGADOR ===== -->
+<div class="fondo" id="fondoJugador">
+  <div class="modal">
+    <h3 id="tituloJugador">Nuevo jugador</h3>
+    <p class="sub">Coleccion: jugadores</p>
+    <label for="jgNombre">Nombre</label>
+    <input id="jgNombre" placeholder="M. Castaneda">
+    <label for="jgEquipo">Equipo</label>
+    <select id="jgEquipo"></select>
+    <label for="jgPos">Posicion</label>
+    <select id="jgPos">
+      <option>POR</option><option>DEF</option><option>MED</option><option>DEL</option>
+    </select>
+    <label for="jgGoles">Goles</label>
+    <input id="jgGoles" class="num" type="number" min="0" value="0">
+    <div class="botones">
+      <button class="sec" id="cancelJugador">Cancelar</button>
+      <button id="guardaJugador">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
