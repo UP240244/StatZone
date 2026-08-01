@@ -2,9 +2,9 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { Partido } from './schemas/partido.schema';
-import { Equipo } from '../equipos/schemas/equipo.schema';
-import { CreatePartidoDto } from './dto/create-partido.dto';
+import { Partido } from './partido.schema';
+import { Equipo } from '../equipos/equipos.schema';
+import { CreatePartidoDto } from '../dto/create-partido.dto';
 
 @Injectable()
 export class PartidosService {

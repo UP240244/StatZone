@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { Equipo } from '../equipos/schemas/equipo.schema';
-import { Jugador } from '../jugadores/schemas/jugador.schema';
-import { Partido } from '../partidos/schemas/partido.schema';
+import { Equipo } from '../equipos/equipos.schema';
+import { Jugador } from '../jugadores/jugador.schema';
+import { Partido } from '../partidos/partido.schema';
 
 @Injectable()
 export class SeedService {

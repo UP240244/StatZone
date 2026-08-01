@@ -3,8 +3,8 @@ import {
 } from '@nestjs/common';
 
 import { EquiposService } from './equipos.service';
-import { CreateEquipoDto } from './dto/create-equipo.dto';
-import { UpdateEquipoDto } from './dto/update-equipo.dto';
+import { CreateEquipoDto } from '../dto/create-equipo.dto';
+import { UpdateEquipoDto } from '../dto/update-equipo.dto';
 
 @Controller('equipos')
 export class EquiposController {

@@ -3,8 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { PartidosController } from './partidos.controller';
 import { PartidosService } from './partidos.service';
-import { Partido, PartidoSchema } from './schemas/partido.schema';
-import { Equipo, EquipoSchema } from '../equipos/schemas/equipo.schema';
+import { Partido, PartidoSchema } from './partido.schema';
+import { Equipo, EquipoSchema } from '../equipos/equipos.schema';
 
 @Module({
   imports: [

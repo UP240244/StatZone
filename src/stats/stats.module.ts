@@ -3,8 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { StatsController } from './stats.controller';
 import { StatsService } from './stats.service';
-import { Equipo, EquipoSchema } from '../equipos/schemas/equipo.schema';
-import { Jugador, JugadorSchema } from '../jugadores/schemas/jugador.schema';
+import { Equipo, EquipoSchema } from '../equipos/equipos.schema';
+import { Jugador, JugadorSchema } from '../jugadores/jugador.schema';
 
 @Module({
   imports: [

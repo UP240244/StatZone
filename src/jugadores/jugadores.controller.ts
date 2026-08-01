@@ -3,8 +3,8 @@ import {
 } from '@nestjs/common';
 
 import { JugadoresService } from './jugadores.service';
-import { CreateJugadorDto } from './dto/create-jugador.dto';
-import { UpdateJugadorDto } from './dto/update-jugador.dto';
+import { CreateJugadorDto } from '../dto/create-jugador.dto';
+import { UpdateJugadorDto } from '../dto/update-jugador.dto';
 
 @Controller('jugadores')
 export class JugadoresController {

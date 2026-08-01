@@ -3,9 +3,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { EquiposController } from './equipos.controller';
 import { EquiposService } from './equipos.service';
-import { Equipo, EquipoSchema } from './schemas/equipo.schema';
-import { Jugador, JugadorSchema } from '../jugadores/schemas/jugador.schema';
-import { Partido, PartidoSchema } from '../partidos/schemas/partido.schema';
+import { Equipo, EquipoSchema } from './equipos.schema';
+import { Jugador, JugadorSchema } from '../jugadores/jugador.schema';
+import { Partido, PartidoSchema } from '../partidos/partido.schema';
 
 @Module({
   imports: [

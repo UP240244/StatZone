@@ -2,11 +2,11 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 
-import { Equipo } from './schemas/equipo.schema';
-import { Jugador } from '../jugadores/schemas/jugador.schema';
-import { Partido } from '../partidos/schemas/partido.schema';
-import { CreateEquipoDto } from './dto/create-equipo.dto';
-import { UpdateEquipoDto } from './dto/update-equipo.dto';
+import { Equipo } from './equipos.schema';
+import { Jugador } from '../jugadores/jugador.schema';
+import { Partido } from '../partidos/partido.schema';
+import { CreateEquipoDto } from '../dto/create-equipo.dto';
+import { UpdateEquipoDto } from '../dto/update-equipo.dto';
 
 @Injectable()
 export class EquiposService {
