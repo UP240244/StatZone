@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 import { Partido } from './partido.schema';
 import { Equipo } from '../equipos/equipos.schema';
@@ -35,8 +35,14 @@ export class PartidosService {
       throw new BadRequestException('Alguno de los equipos no existe');
     }
 
-    const nuevo = new this.partidoModel(dto);
-    return nuevo.save();
+    const nuevo = new this.partidoModel({
+      localId: new Types.ObjectId(dto.localId),
+      visitanteId: new Types.ObjectId(dto.visitanteId),
+      golesLocal: dto.golesLocal,
+      golesVisitante: dto.golesVisitante,
+      fecha: dto.fecha ? new Date(dto.fecha) : new Date(),
+    });
+return nuevo.save();
   }
 
   async eliminar(id: string) {

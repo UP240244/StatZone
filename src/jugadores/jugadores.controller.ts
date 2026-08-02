@@ -17,7 +17,14 @@ export class JugadoresController {
 
   /* IMPORTANTE: las rutas fijas van ANTES que ':id'.
      Si se declara despues, Nest interpreta "buscar" como si fuera un id. */
+  /* Busqueda incremental por prefijo, la que usa la interfaz */
   @Get('buscar')
+  buscarPrefijo(@Query('q') q: string) {
+    return this.jugadoresService.buscarPrefijo(q);
+  }
+
+  /* Busqueda por indice de texto con puntaje de relevancia */
+  @Get('buscar-texto')
   buscar(@Query('q') q: string) {
     // El valor viaja en la query string (?q=...), por eso es @Query y no @Param
     return this.jugadoresService.buscar(q);

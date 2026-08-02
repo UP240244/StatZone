@@ -77,3 +77,29 @@ code{font-family:'IBM Plex Mono';color:var(--fg);font-size:12px}
   th.opt,td.opt{display:none}
   header p{margin-left:0;width:100%}
 }
+
+/* Fin de temporada */
+#btnFinTemporada{
+  margin-left:0;border-color:var(--down);color:var(--down);
+}
+#btnFinTemporada:hover{background:var(--down);color:#121826}
+
+.aviso{display:none;margin-bottom:26px;padding:18px 22px;border-radius:6px;
+  background:var(--card);border:1px solid var(--key);border-left:4px solid var(--key)}
+.aviso.visible{display:block}
+.aviso h3{font-size:17px;font-weight:600;margin-bottom:6px;color:var(--key)}
+.aviso p{font-size:14px;margin:2px 0}
+.aviso .cerrar{width:auto;margin-top:12px;background:transparent;color:var(--dim);
+  border:1px solid var(--line);padding:6px 14px;font-size:12.5px}
+.aviso .cerrar:hover{background:var(--bg);color:var(--fg)}
+
+.edit{background:none;border:none;color:var(--dim);font-size:14px;cursor:pointer;
+  padding:0 3px;width:auto;line-height:1;margin:0}
+.edit:hover{color:var(--key)}
+
+/* Lista de jugadores con scroll */
+#scorers{max-height:340px;overflow-y:auto;padding-right:6px}
+#scorers::-webkit-scrollbar{width:6px}
+#scorers::-webkit-scrollbar-track{background:transparent}
+#scorers::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+#scorers::-webkit-scrollbar-thumb:hover{background:var(--dim)}

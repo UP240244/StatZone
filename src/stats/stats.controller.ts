@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { StatsService } from './stats.service';
 
 @Controller()
@@ -13,5 +13,11 @@ export class StatsController {
   @Get('goleo')
   goleo() {
     return this.statsService.goleo();
+  }
+
+  /* cierra la temporada: devuelve al campeon y reinicia la competencia */
+  @Post('temporada/fin')
+  finTemporada() {
+    return this.statsService.finTemporada();
   }
 }
