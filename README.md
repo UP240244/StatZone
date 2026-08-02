@@ -1,98 +1,151 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+STATZONE
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Sistema web para la gestion y consulta de estadisticas de una liga amateur
+de futbol.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Bases de Datos Avanzadas — Universidad Politecnica de Aguascalientes
+Tecnologias de la Informacion e Innovacion Digital — Grupo 5
+Profesor: Juan Carlos Herrera Hernandez
+Proyecto Final — Unidad 3
 
-## Description
+1. Integrantes
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+  a. Ábgel Iván García Salazar: UP240514
+  b. Alison Tamara Romo Rodríguez: UP240244
 
-## Project setup
+2. Descripcion del proyecto
 
-```bash
-$ npm install
+StatZone administra equipos, jugadores y resultados de partidos de una liga
+amateur, y deriva automaticamente la tabla general de posiciones y el
+liderato de goleo a partir de los encuentros registrados.
+
+El principio de diseno central es que ningun dato derivado se almacena.
+Los puntos, la diferencia de goles y la posicion de cada club no existen
+como campos en la base de datos: se calculan en tiempo de consulta mediante
+agregaciones sobre los partidos capturados. Esto hace imposible que la
+clasificacion mostrada difiera de los resultados reales, un problema comun
+cuando estas tablas se llevan manualmente en hojas de calculo.
+
+Se eligio MongoDB por su modelo documental y por las capacidades de su
+framework de agregacion, que permite resolver las relaciones entre
+colecciones en una sola operacion mediante `$lookup`.
+
+3. Tecnologias
+
+  a. Base de datos: MongoDB
+  b. Backend: NestJS + Mongoose
+  c. Frontend: HTML, CSS Y JavaScript sin frameworks
+  d. Pruebas de API: Bruno
+
+4. Estructura del repositorio
+
+```
+stat-zone/
+├── src/                    backend NestJS
+│   ├── dto/                validaciones con class-validator
+│   ├── equipos/            CRUD de equipos
+│   ├── jugadores/          CRUD de jugadores y busquedas
+│   ├── partidos/           CRUD de partidos
+│   ├── stats/              consultas con relaciones y cierre de temporada
+│   ├── seed/               carga de datos iniciales
+│   ├── app.module.ts
+│   └── main.ts
+├── frontend/               interfaz web
+├── database/               modelo de datos
+├── bruno/                  coleccion de solicitudes HTTP
+└── README.md
 ```
 
-## Compile and run the project
+5. Documentacion por etapa
+
+  a. Base de datos: [database/README.md](database/README.md)
+  b. Backend: [src/README.md](src/README.md)
+  c. Frontend: [frontend/README.md](frontend/README.md)
+  d. Pruebas de API: [bruno/README.md](bruno/README.md)
+
+6. Puesta en marcha
+
+Requisitos: Node.js 20 o superior y MongoDB corriendo en el puerto 27017.
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
+npm run start:dev
 ```
 
-## Run tests
+El API queda en `http://localhost:3000/api`.
 
-```bash
-# unit tests
-$ npm run test
+Para cargar los datos de ejemplo (6 equipos, 22 jugadores y 21 partidos):
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+POST http://localhost:3000/api/seed
 ```
 
-## Deployment
+El frontend se abre directamente desde `frontend/index.html`, o con un
+servidor local como Live Server.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+7. Funcionalidades
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+  a. Gestion (altas, bajas y cambios)
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+  - Equipos: alta, edicion, y baja en cascada que elimina tambien sus
+    jugadores y partidos.
+  - Jugadores: alta, edicion y baja, con validacion de goles.
+  - Partidos: registro de resultados y eliminacion.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+  b. Consultas
 
-## Resources
+  - Tabla general de posiciones calculada a partir de los partidos.
+  - Tabla de goleo con el club de cada anotador.
+  - Busqueda incremental de jugadores por prefijo.
+  - Busqueda por indice de texto con puntaje de relevancia.
 
-Check out a few resources that may come in handy when working with NestJS:
+  c. Cierre de temporada
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+  Determina campeon, subcampeon y maximo goleador, elimina los partidos y
+  reinicia los goles de los jugadores. Los equipos se conservan.
 
-## Support
+8. Consultas con relaciones entre colecciones
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+  a. Tabla de posiciones — `GET /api/tabla`
 
-## Stay in touch
+  Relaciona equipos con partidos mediante `$lookup` con subpipeline.
+  
+  Objetivo: derivar la clasificacion completa a partir de los resultados
+  registrados, garantizando que no pueda existir inconsistencia entre los
+  partidos capturados y los puntos mostrados.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  b. Tabla de goleo — `GET /api/goleo`
 
-## License
+  Relaciona jugadores con equipos mediante `$lookup` por clave foranea.
+  
+  Objetivo: presentar a los maximos anotadores junto con el club al que
+  pertenecen, sin duplicar el nombre del equipo en cada documento de jugador.
+  
+  El detalle de ambos pipelines esta documentado en
+  [src/README.md](src/README.md).
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+9. Implementacion avanzada
+
+  Busqueda de jugadores mediante indice de texto de MongoDB
+  (`GET /api/jugadores/buscar-texto?q=`).
+  
+  A diferencia de una busqueda con `$regex`, un indice de texto invierte el
+  contenido del campo en tokens, por lo que no recorre documento por
+  documento. Ademas expone `$meta: 'textScore'`, un puntaje de relevancia que
+  permite ordenar los resultados segun que tan bien coinciden con el termino
+  buscado. El indice se declara con `default_language: 'spanish'`, lo que
+  aplica las reglas de raiz del espanol e ignora sus palabras vacias.
+
+10. Elemento innovador
+
+  El cierre de temporada (`POST /api/temporada/fin`) no es una operacion
+  CRUD: consume la propia agregacion de posiciones para determinar al campeon
+  antes de ejecutar una operacion de mantenimiento sobre dos colecciones,
+  eliminando los partidos y reiniciando los goles mientras conserva la
+  configuracion de la liga. La interfaz muestra el palmares resultante con
+  campeon, subcampeon y maximo goleador.
+
+11. Reparto del trabajo
+
+  a. Ángel Iván García Salazar: Creación del backend para jugadores, equipos y partidos. Creación de README's y realización de pruebas.
+  b. Alison Tamara Romo Rodríguez: Creación del frontend, dto, seed y stats además de la corrección de errores.
