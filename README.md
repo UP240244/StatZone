@@ -147,5 +147,5 @@ servidor local como Live Server.
 
 11. Reparto del trabajo
 
-  a. Ángel Iván García Salazar: Creación del backend para jugadores, equipos y partidos. Creación de README's y realización de pruebas.
+  a. Ángel Iván García Salazar: Creación del backend para jugadores, equipos y partidos. Creación de README's y realización de pruebas con capturas
   b. Alison Tamara Romo Rodríguez: Creación del frontend, dto, seed y stats además de la corrección de errores.
