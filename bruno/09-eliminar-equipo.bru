@@ -1,0 +1,16 @@
+meta {
+  name: Eliminar equipo
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{base}}/equipos/{{equipoId}}
+  body: none
+  auth: none
+}
+
+docs {
+  Elimina en cascada los jugadores del equipo y los partidos en los que
+  participo, para no dejar documentos huerfanos.
+}

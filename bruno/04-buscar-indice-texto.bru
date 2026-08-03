@@ -1,0 +1,25 @@
+meta {
+  name: Buscar por indice de texto
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base}}/jugadores/buscar-texto?q=mario
+  body: none
+  auth: none
+}
+
+params:query {
+  q: mario
+}
+
+docs {
+  IMPLEMENTACION AVANZADA
+  Usa el indice de texto de MongoDB con $text y devuelve un campo score
+  calculado con $meta: 'textScore', que indica la relevancia de cada
+  resultado.
+
+  A diferencia de $regex, un indice de texto invierte el contenido del
+  campo en tokens y no recorre documento por documento.
+}

@@ -1,0 +1,17 @@
+meta {
+  name: Sembrar datos
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base}}/seed
+  body: none
+  auth: none
+}
+
+docs {
+  Borra las tres colecciones y carga 6 equipos, 22 jugadores y 21 partidos
+  distribuidos en 7 jornadas. Se ejecuta una sola vez antes de las demas
+  solicitudes.
+}

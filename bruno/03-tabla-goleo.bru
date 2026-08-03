@@ -1,0 +1,20 @@
+meta {
+  name: Tabla de goleo
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base}}/goleo
+  body: none
+  auth: none
+}
+
+docs {
+  CONSULTA CON RELACIONES 2
+  Relaciona jugadores con equipos mediante $lookup por clave foranea.
+
+  Objetivo: mostrar a los maximos anotadores junto con el club al que
+  pertenecen, sin duplicar el nombre del equipo en cada documento de
+  jugador.
+}

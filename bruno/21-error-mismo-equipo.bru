@@ -1,0 +1,24 @@
+meta {
+  name: Error - mismo equipo
+  type: http
+  seq: 21
+}
+
+post {
+  url: {{base}}/partidos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "localId": "{{equipoId}}",
+    "visitanteId": "{{equipoId}}",
+    "golesLocal": 1,
+    "golesVisitante": 0
+  }
+}
+
+docs {
+  Debe responder 400. Un equipo no puede jugar contra si mismo.
+}

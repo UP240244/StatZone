@@ -1,0 +1,22 @@
+meta {
+  name: Actualizar equipo
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{base}}/equipos/{{equipoId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Tigres del Valle FC",
+    "ciudad": "Asientos"
+  }
+}
+
+docs {
+  Copiar un _id real de "Listar equipos" a la variable equipoId.
+}

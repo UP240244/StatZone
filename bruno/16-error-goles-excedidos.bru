@@ -1,0 +1,23 @@
+meta {
+  name: Error - goles excedidos
+  type: http
+  seq: 16
+}
+
+put {
+  url: {{base}}/jugadores/{{jugadorId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "goles": 99
+  }
+}
+
+docs {
+  Debe responder 400. La suma de goles de los jugadores de un equipo no
+  puede rebasar los goles que ese equipo anoto segun los partidos
+  registrados.
+}

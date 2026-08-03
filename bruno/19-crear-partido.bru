@@ -1,0 +1,20 @@
+meta {
+  name: Crear partido
+  type: http
+  seq: 19
+}
+
+post {
+  url: {{base}}/partidos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "localId": "{{equipoId}}",
+    "visitanteId": "{{otroEquipoId}}",
+    "golesLocal": 2,
+    "golesVisitante": 1
+  }
+}

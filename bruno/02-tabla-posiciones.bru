@@ -1,0 +1,21 @@
+meta {
+  name: Tabla de posiciones
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base}}/tabla
+  body: none
+  auth: none
+}
+
+docs {
+  CONSULTA CON RELACIONES 1
+  Relaciona equipos con partidos mediante $lookup con subpipeline.
+
+  Objetivo: derivar PJ, G, E, P, diferencia de goles y puntos a partir de
+  los resultados registrados, sin almacenar ningun dato calculado. Esto
+  garantiza que la clasificacion siempre corresponda a los partidos
+  capturados.
+}

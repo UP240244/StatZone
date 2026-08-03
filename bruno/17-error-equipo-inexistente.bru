@@ -1,0 +1,23 @@
+meta {
+  name: Error - equipo inexistente
+  type: http
+  seq: 17
+}
+
+post {
+  url: {{base}}/jugadores
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Prueba",
+    "equipoId": "000000000000000000000000",
+    "pos": "DEL"
+  }
+}
+
+docs {
+  Debe responder 400. Se verifica que el equipo exista antes de guardar.
+}

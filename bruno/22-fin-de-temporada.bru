@@ -1,0 +1,20 @@
+meta {
+  name: Fin de temporada
+  type: http
+  seq: 22
+}
+
+post {
+  url: {{base}}/temporada/fin
+  body: none
+  auth: none
+}
+
+docs {
+  ELEMENTO INNOVADOR
+  Determina campeon, subcampeon y maximo goleador a partir de la
+  agregacion de posiciones, elimina todos los partidos y reinicia los
+  goles de los jugadores. Los equipos se conservan.
+
+  Ejecutar al final: borra los datos de la temporada.
+}

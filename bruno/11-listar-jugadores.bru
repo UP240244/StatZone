@@ -1,0 +1,16 @@
+meta {
+  name: Listar jugadores
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{base}}/jugadores
+  body: none
+  auth: none
+}
+
+docs {
+  Devuelve todos los jugadores con el nombre de su equipo resuelto
+  mediante $lookup, incluidos los que no han anotado.
+}

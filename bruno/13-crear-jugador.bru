@@ -1,0 +1,20 @@
+meta {
+  name: Crear jugador
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{base}}/jugadores
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Esteban Loera",
+    "equipoId": "{{equipoId}}",
+    "pos": "DEL",
+    "goles": 2
+  }
+}

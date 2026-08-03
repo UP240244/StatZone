@@ -1,0 +1,17 @@
+meta {
+  name: Actualizar jugador
+  type: http
+  seq: 14
+}
+
+put {
+  url: {{base}}/jugadores/{{jugadorId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "goles": 4
+  }
+}

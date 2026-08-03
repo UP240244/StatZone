@@ -1,0 +1,22 @@
+meta {
+  name: Error - equipo sin nombre
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{base}}/equipos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "",
+    "ciudad": "Prueba"
+  }
+}
+
+docs {
+  Debe responder 400. Valida el DTO con class-validator.
+}
